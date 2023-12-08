@@ -10,7 +10,7 @@ export const HomePage:React.FC=():JSX.Element=>{
         <div className="flex flex-col items-end justify-center gap-8">
           <h1 className="text-2xl font-bold text-end ">دنبال نقطه‌ی شروع میگردی! از همین جا شروع کن</h1>
           <h2 className="text-xl">همه چیز آماده است. تو آماده ای؟</h2>
-          <Link to="/personalInfo">
+          <Link to="/resumeProgress">
           <button className="btn btn-primary text-[#ffffff] text-base w-[180px] h-[58px] "><FontAwesomeIcon className="pr-XS"  icon={faArrowLeft} /> برو به رزومه ساز</button></Link>
         </div>
        </div>

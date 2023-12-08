@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface IIcon {
     icon: string;
     color?: string;
@@ -6,7 +8,8 @@ interface IIcon {
     style?: {};
   }
 interface IInputProps{
-    name:string,
+    name: string;
+    id: string;
     className:string,
     type: "text" | "number" | "email" | "password" | "tel" | "hidden" | "file";
     label?: string;
@@ -14,12 +17,36 @@ interface IInputProps{
     placeholder?: string;
     icon?:IIcon;
     autoFocus?: boolean;
+    inputValue:string |number;
+    onChange: (name: string, value: string) => void;
 
 }
-export const Input:React.FC<IInputProps>=({type,name,className,label,placeholder,icon}):JSX.Element=>{
+export const Input:React.FC<IInputProps>=({type,name,className,hasLabel,label,placeholder,icon,inputValue,onChange,id}):JSX.Element=>{
+    const [value, setValue] = useState(inputValue);
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(e.target.value);
+      onChange(e.target.name, e.target.value);
+    };
     return(
-        <label htmlFor={name}>
-        <input type={type} name={name} placeholder={placeholder} id={name} className={`${className}`}></input>
-        </label>
+        <>
+        <div className="text-right flex flex-col gap-XS">
+        {hasLabel && (
+            <label
+              className="text-myblack text-sm font-normal leading-normal dark:text-[#bac4c8]"
+              htmlFor={id}
+            >
+              {label}
+            </label>
+          )}
+        <input type={type}
+         name={name}
+         placeholder={placeholder}
+         id={name}
+         className={`input input-primary w-full ${className}`}
+         value={inputValue}
+         onChange={handleChange}>
+         </input>
+         </div>
+        </>
     )
 }
