@@ -12,7 +12,7 @@ export const Button:React.FC<IButtonProps>=({title,className,id,hasIcon,icon,onC
    
     return(
         <div>
-            <button className={`btn btn-active btn-primary ${className}`} id={id} onClick={onClick}>
+            <button className={`btn btn-active btn-primary ${className}`} type="button" id={id} onClick={onClick}>
                {hasIcon&&<FontAwesomeIcon icon={icon}/>} {title }
                 </button>
         </div>

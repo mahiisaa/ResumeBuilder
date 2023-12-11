@@ -10,9 +10,10 @@ interface IProgressItemProps{
 }
 export const ProgressItem:React.FC<IProgressItemProps>=({title,icon,selectItem,className,select,step}):JSX.Element=>{
     return(
-        <li className={`py-S w-1/5 text-center   cursor-pointer ${select===step?"text-primary border-b-2": "text-mygray"}`} onClick={()=>selectItem(step)}>
+        <li className={`py-S w-1/5 text-center cursor-pointer ${select===step?"text-primary border-b-2": "text-mygray"}`} onClick={()=>selectItem(step)}>
+        <FontAwesomeIcon className="pr-0 sm:pl-S"  icon={icon} />
         <span className="hidden lg:inline-block hover:bg-bgcolor hover:rounded-2xl ">{title}</span>
-        <FontAwesomeIcon className="pl-0 sm:pl-S"  icon={icon} />
+        
         </li>
     )
 }

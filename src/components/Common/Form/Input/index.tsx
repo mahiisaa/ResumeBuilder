@@ -32,7 +32,7 @@ export const Input:React.FC<IInputProps>=({type,name,className,hasLabel,label,pl
         <div className="text-right flex flex-col gap-XS">
         {hasLabel && (
             <label
-              className="text-myblack text-sm font-normal leading-normal dark:text-[#bac4c8]"
+              className="text-myblack text-sm font-normal leading-normal dark:text-[#bac4c8] "
               htmlFor={id}
             >
               {label}
@@ -42,7 +42,7 @@ export const Input:React.FC<IInputProps>=({type,name,className,hasLabel,label,pl
          name={name}
          placeholder={placeholder}
          id={name}
-         className={`input input-primary w-full ${className}`}
+         className={`input input-primary w-full rounded-md border border-lightgray px-2 text-right w-full ${className}`}
          value={inputValue}
          onChange={handleChange}>
          </input>
