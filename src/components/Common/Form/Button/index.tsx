@@ -5,7 +5,8 @@ interface IButtonProps{
     className:string,
     id:string,
     hasIcon?:boolean,
-    icon?:any
+    icon?:any,
+    direction?:string
     onClick:()=>void
 }
 export const Button:React.FC<IButtonProps>=({title,className,id,hasIcon,icon,onClick}):JSX.Element=>{
@@ -13,7 +14,7 @@ export const Button:React.FC<IButtonProps>=({title,className,id,hasIcon,icon,onC
     return(
         <div>
             <button className={`btn btn-active btn-primary ${className}`} type="button" id={id} onClick={onClick}>
-               {hasIcon&&<FontAwesomeIcon icon={icon}/>} {title }
+               {hasIcon &&  <FontAwesomeIcon icon={icon}/>} {title }
                 </button>
         </div>
     )

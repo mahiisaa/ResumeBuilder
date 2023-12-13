@@ -5,8 +5,8 @@ export const BusinessBox:React.FC=():JSX.Element=>{
         <div  className=" grid grid-cols-3 gap-4 shadow-md bg-[#ffffff] py-10 px-8 mb-[20px] rounded-xl">
         <div className="">
           <Input
-            name={"grade"}
-            id={"grade"}
+            name={"position"}
+            id={"position"}
             className={""}
             type={"text"}
             inputValue={""}
@@ -17,8 +17,8 @@ export const BusinessBox:React.FC=():JSX.Element=>{
         </div>
         <div className="">
           <Input
-            name={"major"}
-            id={"major"}
+            name={"level"}
+            id={"level"}
             className={""}
             type={"text"}
             inputValue={""}
@@ -29,8 +29,8 @@ export const BusinessBox:React.FC=():JSX.Element=>{
         </div>
         <div className="">
           <Input
-            name={"orientation"}
-            id={"orientation"}
+            name={"company"}
+            id={"company"}
             className={""}
             type={"text"}
             inputValue={""}
@@ -41,8 +41,8 @@ export const BusinessBox:React.FC=():JSX.Element=>{
         </div>
         <div className="">
           <Input
-            name={"collegeName"}
-            id={"collegeName"}
+            name={"companyProvince"}
+            id={"companyProvince"}
             className={""}
             type={"text"}
             inputValue={"استان"}
@@ -53,14 +53,14 @@ export const BusinessBox:React.FC=():JSX.Element=>{
         </div>
         <div className="">
           <Input
-            name={""}
-            id={""}
+            name={"companyAddress"}
+            id={"companyAddress"}
             className={""}
             type={"text"}
             inputValue={""}
             onChange={() => {}}
             hasLabel={true}
-            label="شهر "
+            label="محدوده شرکت "
           ></Input>
         </div>
         <div className="w-full flex justify-end gap-4">
@@ -76,14 +76,14 @@ export const BusinessBox:React.FC=():JSX.Element=>{
                 htmlFor="GraduateState"
                 className="mr-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
-                در حال تحصیل
+                در حال اشتغال
               </label>
             </div>
 
             <div className="">
               <Input
-                name={"major"}
-                id={"major"}
+                name={"employmentYear"}
+                id={"employmentYear"}
                 className={""}
                 type={"number"}
                 inputValue={""}
@@ -94,8 +94,8 @@ export const BusinessBox:React.FC=():JSX.Element=>{
             </div>
             <div className="">
               <Input
-                name={"orientation"}
-                id={"orientation"}
+                name={"leavingYear"}
+                id={"leavingYear"}
                 className={""}
                 type={"number"}
                 inputValue={""}
@@ -104,18 +104,6 @@ export const BusinessBox:React.FC=():JSX.Element=>{
                 label=" سال فراغت"
               ></Input>
             </div>
-          </div>
-          <div className="">
-            <Input
-              name={""}
-              id={""}
-              className={""}
-              type={"text"}
-              inputValue={""}
-              onChange={() => {}}
-              hasLabel={true}
-              label="معدل"
-            ></Input>
           </div>
         </div>
       </div>

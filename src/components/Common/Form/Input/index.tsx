@@ -28,8 +28,7 @@ export const Input:React.FC<IInputProps>=({type,name,className,hasLabel,label,pl
       onChange(e.target.name, e.target.value);
     };
     return(
-        <>
-        <div className="text-right flex flex-col gap-XS">
+         <div className="text-right flex flex-col gap-XS">
         {hasLabel && (
             <label
               className="text-myblack text-sm font-normal leading-normal dark:text-[#bac4c8] "
@@ -46,7 +45,6 @@ export const Input:React.FC<IInputProps>=({type,name,className,hasLabel,label,pl
          value={inputValue}
          onChange={handleChange}>
          </input>
-         </div>
-        </>
+         </div> 
     )
 }

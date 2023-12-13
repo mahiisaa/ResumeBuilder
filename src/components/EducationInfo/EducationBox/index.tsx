@@ -51,23 +51,11 @@ export const EducationBox:React.FC=():JSX.Element=>{
             label="نام موسسه"
           ></Input>
         </div>
-        <div className="">
-          <Input
-            name={""}
-            id={""}
-            className={""}
-            type={"text"}
-            inputValue={""}
-            onChange={() => {}}
-            hasLabel={true}
-            label="کشور "
-          ></Input>
-        </div>
 
         <div className="">
           <Input
-            name={"grade"}
-            id={"grade"}
+            name={"collegeProvince"}
+            id={"collegeProvince"}
             className={""}
             type={"text"}
             inputValue={""}
@@ -95,8 +83,8 @@ export const EducationBox:React.FC=():JSX.Element=>{
 
             <div className="">
               <Input
-                name={"major"}
-                id={"major"}
+                name={"enteringYear"}
+                id={"enteringYear"}
                 className={""}
                 type={"number"}
                 inputValue={""}
@@ -107,21 +95,21 @@ export const EducationBox:React.FC=():JSX.Element=>{
             </div>
             <div className="">
               <Input
-                name={"orientation"}
-                id={"orientation"}
+                name={"graduationYear"}
+                id={"graduationYear"}
                 className={""}
                 type={"number"}
                 inputValue={""}
                 onChange={() => {}}
                 hasLabel={true}
-                label=" سال فراغت"
+                label="سال فراغت از تحصیل"
               ></Input>
             </div>
           </div>
           <div className="">
             <Input
-              name={""}
-              id={""}
+              name={"average"}
+              id={"average"}
               className={""}
               type={"text"}
               inputValue={""}

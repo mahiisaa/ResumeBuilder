@@ -27,7 +27,7 @@ export const ProgressBar:React.FC<IProgressBarProps>=({select,selectItem}):JSX.E
 
     return(
 <div className="w-full static">
-    <ul className="flex flex-row justify-between items-center border-2 border-bgColor text-base  ">
+    <ul className="flex flex-row justify-between items-center border-b-2 border-bgColor text-base">
 
      {
         steps.map((item)=>{

@@ -3,7 +3,6 @@ import { HomePage } from "./components/Homepage";
 import { Dashboard } from "./components/Layouts/Dashboard";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { Progress } from "./components/Layouts/Progress";
-import { PersonalInfo } from "./components/PersonalInfo";
 import { Signup } from "./components/Signup";
 import { Login } from "./components/Login";
 

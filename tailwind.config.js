@@ -5,6 +5,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      width: {
+        A4: '210mm',
+     },
+     height: {
+        A4: '297mm',
+     },
       spacing: {
         "2XL": "50px",
         XL: "40px",
@@ -13,6 +19,9 @@ module.exports = {
         S: "16px",
         XS: "8px",
       },
+      scale: {
+        '-100': '-1',
+    }
     },
     screens: {
       xs: "475px",
@@ -23,10 +32,11 @@ module.exports = {
       "2xl": "1536px",
     },
     colors:{
-
       "bgColor":"#dee2e6",
+      "bgColorLight":"#edeff1",
       "primary":"#3a0ca3",
-      "secondary":"#4361ee",
+      "primaryLight":"#743df1",
+      "secondColor":"#ffb703",
       "myblack":"#0d0d0f",
       "mygray":"#999ca9"
     },
@@ -36,7 +46,8 @@ module.exports = {
       base: ["16px", "27.64px"],
       xl: ["20px", "34.55px"],
       "2xl": ["24px", "41.45px"],
-      "3xl": ["32px", "41.45px"],
+      "3xl": ["32px", "55.26px"],
+      "4xl": ["48px", "82.09px"],
     },
     fontFamily: {
       vazir: ["Vazir"],
