@@ -15,9 +15,10 @@ const App = (): JSX.Element => {
           <Route index element={<HomePage/>}></Route>
           <Route path="/resumeProgress" element={<Progress/>}>
           </Route>
-          <Route path="/login" element={<Login/>}></Route>
-          <Route path="/siginup" element={<Signup/>}></Route>
+          
         </Route>
+        <Route path="/login" element={<Login/>}></Route>
+          <Route path="/siginup" element={<Signup/>}></Route>
       </Routes>
     </BrowserRouter>
   );

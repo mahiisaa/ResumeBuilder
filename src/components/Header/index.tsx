@@ -18,7 +18,7 @@ export const Header: React.FC = (): JSX.Element => {
      <h1 className="text-2xl font-black w-1/3 text-center text-primaryLight">Resume</h1>
      </Link>
 
-      <div className="w-1/3 flex justify-end"> <button className="btn hidden w-[148px] text-base sm:flex sm:justify-center sm:items-center text-start border border-mygray text-myblack px-2"><FontAwesomeIcon className="" icon={faSignIn } />ورود | ثبت نام </button><FontAwesomeIcon className="sm:hidden" icon={faSignIn } size="lg"/></div>
+      <div className="w-1/3 flex justify-end"><Link to={"/login"}> <button className="btn hidden w-[148px] text-base sm:flex sm:justify-center sm:items-center text-start border border-mygray text-myblack px-2"><FontAwesomeIcon className="" icon={faSignIn } />ورود | ثبت نام </button><FontAwesomeIcon className="sm:hidden" icon={faSignIn} size="lg"/></Link></div>
     </div>
   );
 };
