@@ -108,8 +108,8 @@ export const PersonalInfo: React.FC<personalInfoProps> = ({data,handleChange}): 
           <SelectInput options={["خانم","آقا"]} title={"جنسیت"} className="" id="gender" name="gender" inputValue={data?.gender}  onchange={(name, value) => handleChange(name, value)} />
           <SelectInput options={["متاهل","مجرد"]} title={"وضعیت تاهل"} className="" id="marital" name="marital" inputValue={data?.marital} onchange={(name,value)=>handleChange(name,value)} />
           <SelectInput options={["مشمول","معاف","در حال خدمت","پایان خدمت"]} title={"خدمت سربازی"} className="w-1/3" id="military" name="military" inputValue={data?.military}  onchange={(name, value) => handleChange(name, value)}/>
-          <div className="flex justify-center items-start smcol-span-3 gap-4">
-            <div className="w-[32%]">
+          <div className="flex justify-center items-start sm:col-span-3 gap-4">
+            <div className="sm:w-1/2">
              <Input
             name={"birthYear"}
             className={""}
@@ -122,7 +122,12 @@ export const PersonalInfo: React.FC<personalInfoProps> = ({data,handleChange}): 
             onChange={(name, value) => handleChange(name, value)}
           ></Input>
            </div>
-           <div className="w-[32%]">
+           <div className="sm:w-1/2">
+            <SelectInput options={['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند']} title={"ماه تولد"} className={""} id={"birthMonth"} name={"birthMonth"} inputValue={data?.birthMonth} onchange={(name,value)=>handleChange(name,value)} ></SelectInput>
+          
+          {/* </div> */}
+          </div>
+          <div className="sm:w-1/2">
             <SelectInput options={['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند']} title={"ماه تولد"} className={""} id={"birthMonth"} name={"birthMonth"} inputValue={data?.birthMonth} onchange={(name,value)=>handleChange(name,value)} ></SelectInput>
           
           {/* </div> */}
