@@ -10,9 +10,9 @@ export const Login:React.FC=():JSX.Element=>{
 
       }
     return(
-        <div className="lg:px-[88px] px-[40px] md:px-[60px] relative bg-bgColor py-[90px] flex justify-center items-center h-[100vh]">
+        <div className="lg:px-[88px] px-[100px] md:px-[60px] relative sm:bg-bgColor sm:py-[80px] py-0 mt-20 flex justify-center items-center h-[100vh]">
             <form>
-                <div className="flex justify-center  flex-col items-center shadow-md bg-[#ffffff] py-8 px-10 rounded-xl w-[500px] gap-4">
+                <div className="flex justify-center  flex-col items-center sm:shadow-md bg-[#ffffff] sm:py-8 sm:px-10 px-5 py-4 rounded-xl w-[400px] sm:w-[500px] gap-4">
                 <Link to={"/"}>
                 <h1 className="text-2xl font-black  text-center text-primaryLight mb-1">Resume</h1>
                 </Link>

@@ -126,7 +126,7 @@ export const Progress: React.FC = (): JSX.Element => {
   return (
     <>
       <ProgressBar select={select} selectItem={handleSelect} />
-      <div className="lg:px-[88px] px-[40px] md:px-[60px] relative bg-bgColor py-[90px]">
+      <div className="lg:px-[88px] sm:px-[40px] md:px-[60px] relative sm:bg-bgColor sm:py-[70px]">
         {select === 1 ? (
           <PersonalInfo data={values} handleChange={handleChange} />
         ) : select === 2 ? (
@@ -140,8 +140,9 @@ export const Progress: React.FC = (): JSX.Element => {
         )}
 
         <div className="fixed bottom-10 left-0 lg:px-[88px] px-[40px] md:px-[60px] flex justify-between items-center w-full">
+          <div>
           <Button
-            className={""}
+            className={"hidden sm:block"}
             id={"previous"}
             hasIcon={true}
             icon={faArrowRight}
@@ -150,7 +151,18 @@ export const Progress: React.FC = (): JSX.Element => {
             direction={"left"}
           ></Button>
           <Button
-            className={""}
+            className={"sm:hidden"}
+            id={"previous"}
+            hasIcon={true}
+            icon={faArrowRight}
+            onClick={goPrevious}
+            title={""}
+            direction={"left"}
+          ></Button>
+          </div>
+          <div>
+          <Button
+            className={"hidden sm:block"}
             id={"next"}
             hasIcon={true}
             icon={faArrowLeft}
@@ -158,6 +170,16 @@ export const Progress: React.FC = (): JSX.Element => {
             onClick={goForward}
             title={`${select === 5 ? "ذخیره و مشاهده" : "ذخیره و ادامه"}`}
           ></Button>
+           <Button
+            className={"sm:hidden"}
+            id={"next"}
+            hasIcon={true}
+            icon={faArrowLeft}
+            direction="right"
+            onClick={goForward}
+            title={`${select === 5 ? "" : ""}`}
+          ></Button>
+          </div>
         </div>
       </div>
     </>

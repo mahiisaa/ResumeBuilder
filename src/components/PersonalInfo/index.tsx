@@ -39,9 +39,10 @@ export const PersonalInfo: React.FC<personalInfoProps> = ({data,handleChange}): 
   return (
    
       <form >
-        <div className="flex justify-between lg:flex-row md:flex-row flex-col items-center shadow-md bg-[#ffffff] py-10 px-8 rounded-xl">
-        <div className="w-1/4 flex flex-col justify-center items-center gap-4">
-         <img src={AvatarSVG}></img>
+        <div className="flex justify-between lg:flex-row md:flex-row flex-col items-center sm:shadow-md bg-[#ffffff] sm:py-10 py-8 sm:px-8 px-4  rounded-xl">
+        <div className="sm:w-1/4 w-full flex flex-col justify-center items-center gap-4">
+          <div className=" w-[140px] "><img src={AvatarSVG}></img></div>
+         
         <File
               inputValue=""
               id="thumbnail"
@@ -52,8 +53,8 @@ export const PersonalInfo: React.FC<personalInfoProps> = ({data,handleChange}): 
               styles="text-brand-primary text-base font-medium border border-brand-primary h-[48px] rounded-lg w-[140px] p-[10px] cursor-pointer border-box text-center bg-[#ffffff]"
             />
         </div>
-        <div className="w-3/4 grid grid-cols-3 gap-4">
-          <div className="">
+        <div className="sm:w-3/4  grid grid-cols-2 sm:grid-cols-6 gap-4 justify-center sm:mt-0 mt-8">
+          <div className="sm:col-span-2">
           <Input
             name={"firstName"}
             className={""}
@@ -66,7 +67,7 @@ export const PersonalInfo: React.FC<personalInfoProps> = ({data,handleChange}): 
             onChange={(name, value) => handleChange(name, value)} 
           ></Input>
           </div>
-          <div className="">
+          <div className="sm:col-span-2">
           <Input
             name={"lastName"}
             className={""}
@@ -79,7 +80,7 @@ export const PersonalInfo: React.FC<personalInfoProps> = ({data,handleChange}): 
                onChange={(name, value) => handleChange(name, value)}
           ></Input>
           </div>
-          <div className="">
+          <div className="col-span-2 sm:col-span-2">
           <Input
             name={"jobTitle"}
             className={""}
@@ -93,7 +94,7 @@ export const PersonalInfo: React.FC<personalInfoProps> = ({data,handleChange}): 
           
           ></Input>
           </div>
-          <div className="text-right flex flex-col gap-XS w-full  col-span-3">
+          <div className="text-right flex flex-col col-span-2 sm:col-span-6 gap-XS">
             <label
               className="text-myblack text-sm font-normal leading-normal dark:text-[#bac4c8] "
               htmlFor="aboutMe"
@@ -103,11 +104,11 @@ export const PersonalInfo: React.FC<personalInfoProps> = ({data,handleChange}): 
           <textarea className="textarea textarea-primary textarea-lg text-right" id="aboutMe" placeholder="Bio" name="aboutMe"
            onChange={(e)=>handleChange(e.target.name,e.target.value)}></textarea>
           </div>
-          <div className="grid grid-cols-6 gap-4 col-span-3" >
+          {/* <div className="grid grid-cols-3 sm:col-span-6 gap-4 col-span-3" > */}
           <SelectInput options={["خانم","آقا"]} title={"جنسیت"} className="" id="gender" name="gender" inputValue={data?.gender}  onchange={(name, value) => handleChange(name, value)} />
           <SelectInput options={["متاهل","مجرد"]} title={"وضعیت تاهل"} className="" id="marital" name="marital" inputValue={data?.marital} onchange={(name,value)=>handleChange(name,value)} />
           <SelectInput options={["مشمول","معاف","در حال خدمت","پایان خدمت"]} title={"خدمت سربازی"} className="w-1/3" id="military" name="military" inputValue={data?.military}  onchange={(name, value) => handleChange(name, value)}/>
-          <div className="flex justify-center items-center col-span-3 gap-4">
+          <div className="flex justify-center items-start smcol-span-3 gap-4">
             <div className="w-[32%]">
              <Input
             name={"birthYear"}
@@ -124,12 +125,12 @@ export const PersonalInfo: React.FC<personalInfoProps> = ({data,handleChange}): 
            <div className="w-[32%]">
             <SelectInput options={['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند']} title={"ماه تولد"} className={""} id={"birthMonth"} name={"birthMonth"} inputValue={data?.birthMonth} onchange={(name,value)=>handleChange(name,value)} ></SelectInput>
           
-          </div>
+          {/* </div> */}
           </div>
            </div>
         </div>
         </div>
-        <div className="grid grid-cols-3 gap-4 shadow-md bg-[#ffffff] py-10 px-8 rounded-xl mt-[40px]">
+        <div className="grid sm:grid-cols-3 grid-cols-2 gap-4 sm:shadow-md bg-[#ffffff] py-10 px-8 rounded-xl mt-[40px]">
         
         <Input
             name={"phoneNumber"}
@@ -178,6 +179,7 @@ export const PersonalInfo: React.FC<personalInfoProps> = ({data,handleChange}): 
             onChange={(name, value) => handleChange(name, value)}
             
           ></Input>
+          <div className="col-span-2 ">
           <Input
             name={"address"}
             className={""}
@@ -190,6 +192,7 @@ export const PersonalInfo: React.FC<personalInfoProps> = ({data,handleChange}): 
             onChange={(name, value) => handleChange(name, value)}
             
           ></Input>
+          </div>
         </div>
       </form>
 

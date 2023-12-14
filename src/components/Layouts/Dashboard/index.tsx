@@ -6,7 +6,7 @@ export const Dashboard:React.FC=():JSX.Element=>{
         <div>
         <Header/>
            <Outlet/>
-           <Footer/>
+           {/* <Footer/> */}
         </div>
     )
 }
