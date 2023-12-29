@@ -7,6 +7,14 @@
   src: url("../src/assets/fonts/Vazir.ttf") format('truetype');
   font-weight: normal;
 }
+/* @font-face {
+  font-family: Yekan;
+  src: url("../src/assets/fonts/yekan/Yekan-normal.ttf") format('truetype');
+  font-weight: normal;
+} */
 * {
     @apply font-vazir
+  }
+  .print{
+    direction:rtl
   }

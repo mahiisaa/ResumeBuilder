@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface IProps {
   hasLabel?: boolean;
@@ -6,7 +7,7 @@ interface IProps {
   name: string;
   inputValue?: string;
   hasIcon?: boolean;
-  icon?: string;
+  icon?: any;
   text?: string;
   styles: string;
   onChangeFile?: (name: string, value: any) => void;
@@ -36,7 +37,7 @@ export const File: React.FC<IProps> = ({
     <div className="flex flex-row-reverse items-center">
       {hasLabel && (
         <label
-          className="dark:text-[#bac4c8] text-black text-sm font-normal leading-normal ml-S"
+          className="dark:text-[#bac4c8] text-black text-sm font-normal leading-normal mr-S"
           htmlFor={id}
         >
           {label}
@@ -45,6 +46,7 @@ export const File: React.FC<IProps> = ({
    
         <label className={`dark:text-[#bac4c8] ${styles}`}>
           {text}
+          {hasIcon && <FontAwesomeIcon className="mr-2" icon={icon} />}
           {/* {hasIcon && <Icon icon={icon} />} */}
           <input
             value={inputValue}

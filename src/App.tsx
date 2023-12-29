@@ -1,26 +1,33 @@
 import "./App.css";
-import { HomePage } from "./components/Homepage";
+import { HomePage } from "./pages/Homepage";
 import { Dashboard } from "./components/Layouts/Dashboard";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { Progress } from "./components/Layouts/Progress";
-import { Signup } from "./components/Signup";
-import { Login } from "./components/Login";
+import { Login } from "./pages/Login";
+import { Templates } from "./pages/Templates";
+import { DefaultTemp } from "./pages/Templates/DefaultTemp";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
+
+
 
 
 const App = (): JSX.Element => {
+  
   return (
+    <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Dashboard />}>
-          <Route index element={<HomePage/>}></Route>
-          <Route path="/resumeProgress" element={<Progress/>}>
-          </Route>
-          
+          <Route index element={<HomePage />}></Route>
+          <Route path="/templates" element={<Templates />}></Route>
+          <Route path="/1" element={<DefaultTemp />}></Route>
+          <Route path="/resumeProgress" element={<Progress />}></Route>
         </Route>
-        <Route path="/login" element={<Login/>}></Route>
-          <Route path="/siginup" element={<Signup/>}></Route>
+        <Route path="/login" element={<Login />}></Route>
       </Routes>
     </BrowserRouter>
+    </Provider>
   );
 };
 

@@ -34,10 +34,13 @@ module.exports = {
     colors:{
       "bgColor":"#dee2e6",
       "bgColorLight":"#edeff1",
-      "primary":"#3a0ca3",
+      "primary":"#2B58C4",
       "primaryLight":"#743df1",
       "secondColor":"#ffb703",
+      "errorColor":"#d90429",
+      "errorColorLight":"#ef233c",
       "myblack":"#0d0d0f",
+      "successColor":"#2ecc71",
       "mygray":"#999ca9"
     },
     fontSize: {
@@ -58,7 +61,8 @@ module.exports = {
       {
         light: {
           ...require("daisyui/src/theming/themes")["[data-theme=light]"],
-          primary: "#3a0ca3",
+          primary: "#2B58C4",
+          successColor:"#2ecc71",
           "primary-focus": "mediumblue",
         },
       },

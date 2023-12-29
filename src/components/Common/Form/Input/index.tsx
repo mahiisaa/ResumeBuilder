@@ -22,9 +22,9 @@ interface IInputProps{
 
 }
 export const Input:React.FC<IInputProps>=({type,name,className,hasLabel,label,placeholder,icon,inputValue,onChange,id}):JSX.Element=>{
-    const [value, setValue] = useState(inputValue);
+    //const [value, setValue] = useState(inputValue);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setValue(e.target.value);
+     // setValue(e.target.value);
       onChange(e.target.name, e.target.value);
     };
     return(
@@ -41,7 +41,7 @@ export const Input:React.FC<IInputProps>=({type,name,className,hasLabel,label,pl
          name={name}
          placeholder={placeholder}
          id={name}
-         className={`input input-primary w-full rounded-md border border-lightgray px-2 text-right w-full ${className}`}
+         className={`border border-bgColor h-[48px] outline-primary w-full rounded-md px-2 text-right w-full ${className}`}
          value={inputValue}
          onChange={handleChange}>
          </input>

@@ -1,6 +1,17 @@
 import { Input } from "../../Common/Form/Input"
-
-export const BusinessBox:React.FC=():JSX.Element=>{
+type BusinessInfoType = {
+  id:number
+  position: string;
+  level: string;
+  company: string;
+  employmentYear: number;
+  leavingYear: number;
+};
+interface IBusinessInfoProps {
+  boxdata: BusinessInfoType;
+  handleChange: (name: string, value: string,id:number) => void;
+}
+export const BusinessBox:React.FC<IBusinessInfoProps>=({boxdata,handleChange}):JSX.Element=>{
     return(
         <div  className=" grid grid-cols-3 gap-4 shadow-md bg-[#ffffff] py-10 px-8 mb-[20px] rounded-xl">
         <div className="">
@@ -9,7 +20,7 @@ export const BusinessBox:React.FC=():JSX.Element=>{
             id={"position"}
             className={""}
             type={"text"}
-            inputValue={""}
+            inputValue={boxdata.position}
             onChange={() => {}}
             hasLabel={true}
             label="عنوان شغلی "
@@ -21,7 +32,7 @@ export const BusinessBox:React.FC=():JSX.Element=>{
             id={"level"}
             className={""}
             type={"text"}
-            inputValue={""}
+            inputValue={boxdata.level}
             onChange={() => {}}
             hasLabel={true}
             label=" سطح ارشدیت"
@@ -33,7 +44,7 @@ export const BusinessBox:React.FC=():JSX.Element=>{
             id={"company"}
             className={""}
             type={"text"}
-            inputValue={""}
+            inputValue={boxdata.company}
             onChange={() => {}}
             hasLabel={true}
             label="نام شرکت"
@@ -45,7 +56,7 @@ export const BusinessBox:React.FC=():JSX.Element=>{
             id={"companyProvince"}
             className={""}
             type={"text"}
-            inputValue={"استان"}
+            inputValue={""}
             onChange={() => {}}
             hasLabel={true}
             label=" "
@@ -69,7 +80,7 @@ export const BusinessBox:React.FC=():JSX.Element=>{
               <input
                 id="GraduateState"
                 type="checkbox"
-                value=""
+                value={boxdata.leavingYear}
                 className=" text-blue-600 bg-gray-100 border-gray-300 rounded  focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
               ></input>
               <label
@@ -86,7 +97,7 @@ export const BusinessBox:React.FC=():JSX.Element=>{
                 id={"employmentYear"}
                 className={""}
                 type={"number"}
-                inputValue={""}
+                inputValue={boxdata.employmentYear}
                 onChange={() => {}}
                 hasLabel={true}
                 label="سال ورود"
@@ -98,7 +109,7 @@ export const BusinessBox:React.FC=():JSX.Element=>{
                 id={"leavingYear"}
                 className={""}
                 type={"number"}
-                inputValue={""}
+                inputValue={boxdata.leavingYear}
                 onChange={() => {}}
                 hasLabel={true}
                 label=" سال فراغت"

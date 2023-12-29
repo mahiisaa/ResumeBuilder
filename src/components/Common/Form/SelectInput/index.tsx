@@ -7,13 +7,13 @@ interface ISelectInputProps{
     id:string,
     name:string,
     inputValue:string |number;
-    onchange: (name: string, value: string) => void;
+    onChange: (name: string, value: string) => void;
 }
-export const SelectInput:React.FC<ISelectInputProps>=({options,title,className,id,name,onchange,inputValue}):JSX.Element=>{
+export const SelectInput:React.FC<ISelectInputProps>=({options,title,className,id,name,onChange,inputValue}):JSX.Element=>{
   const [value, setValue] = useState(inputValue);
     const handleChange=(e: React.ChangeEvent<HTMLSelectElement>)=>{
       setValue(e.target.value)
-      onchange(e.target.name, e.target.value);
+      onChange(e.target.name, e.target.value);
       console.log(e.target.name)
     }
     return(
@@ -24,8 +24,8 @@ export const SelectInput:React.FC<ISelectInputProps>=({options,title,className,i
             >
               {title}
             </label>
-            <select className={`select select-primary w-full max-w-xs outline-none text-right ${className}`}  
-             value={value} onChange={handleChange}>
+            <select className={`border px-2 border-bgColor h-[48px] rounded-md w-full  outline-none text-right ${className}`}  
+             value={inputValue} onChange={handleChange}>
             <option disabled selected className="text-right p-4" ></option>
                 {options.map((item)=><option value={item}  >{item}</option>)}
              </select>

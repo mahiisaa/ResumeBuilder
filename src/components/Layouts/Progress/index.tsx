@@ -11,12 +11,33 @@ import { AXIOS } from "../../../config/axios.config";
 import { API_URLS } from "../../../constants/api.urls";
 
 export const Progress: React.FC = (): JSX.Element => {
-  type valueType = {
+  interface Education {
+    id:number
+    grade: string;
+    major: string;
+    orientation: string;
+    collegeType: string;
+    collegeName: string;
+    collegeProvince: string;
+    average: number;
+    enteringYear: number;
+    graduationYear: number;
+  }
+  interface Business {
+    id:number
+    position: string;
+    level: string;
+    company: string;
+    employmentYear: number;
+    leavingYear: number;
+  }
+  interface valueType {
     jobTitle: string;
     firstName: string;
     lastName: string;
     birthYear: number;
     birthMonth: string;
+    birthDay: string;
     gender: string;
     aboutMe: string;
     military: string;
@@ -26,70 +47,70 @@ export const Progress: React.FC = (): JSX.Element => {
     province: string;
     city: string;
     address: string;
-    education:[{
-      grade:string;
-      major:string;
-      orientation:string;
-      collegeName:string;
-      collegeProvince:string;
-      enteringYear:number;
-      graduationYear:number
-  }];
-  business:[{
-   position:string;
-   level:string;
-   company:string;
-   employmentYear:number;
-   leavingYear:number;
-}]
-    
-  };
-  const [values, setValues] = useState<valueType>(
-    JSON.parse(
-      localStorage.getItem("values") ||
-        `{  jobTitle: "",
-     firstName: "",
-     lastName: "",
-     birthYear:0;
-     birthMonth:"",
-     gender: "",
-     aboutMe:"",
-     military: "",
-     marital: "",
-     phoneNumber: "",
-     email: "",
-     province: "",
-     city: "",
-     address: ""
-     education:[{
-      grade:"";
-      major:"";
-      orientation:"";
-      collegeName:"";
-      collegeProvince:"";
-      enteringYear:1390;
-      graduationYear:1390
-  }];
-  business:[{
-   position:"";
-   level:"";
-   company:"";
-   employmentYear:1390;
-   leavingYear:1390;
-}]}`
-    )
-  );
+    education: Education[];
+    business: Business[];
+  }
+
+  const initialState: valueType =
+    // JSON.parse(localStorage.getItem("values") || "{}").education &&
+    // JSON.parse(localStorage.getItem("values") || "{}").business
+    localStorage.getItem("values")
+      ? JSON.parse(localStorage.getItem("values") || "{}")
+      : {
+          jobTitle: "",
+          firstName: "",
+          lastName: "",
+          birthYear: 0,
+          birthMonth: "",
+          birthDay: "",
+          gender: "",
+          aboutMe: "",
+          military: "",
+          marital: "",
+          phoneNumber: "",
+          email: "",
+          province: "",
+          city: "تهران",
+          address: "",
+          education: [
+            {
+              id: 0,
+              grade: "",
+              major: "",
+              orientation: "نرم افزار",
+              collegeName: "",
+              collegeType: "",
+              collegeProvince: "",
+              enteringYear: 1390,
+              average: 0,
+              graduationYear: 1390,
+            },
+          ],
+          business: [
+            {
+              id:0,
+              position: "",
+              level: "",
+              company: "",
+              employmentYear: 1390,
+              leavingYear: 1390,
+            },
+          ],
+        };
+  const [values, setValues] = useState<valueType>(initialState);
+ // const [education,setEducation]=useState<Education>(init)
   const [select, setSelect] = useState<number>(
-    Number(localStorage.getItem("select"))
+    Number(localStorage.getItem("select") || 1)
   );
   const [response, setResponse] = useState<any>(null);
   const [error, setError] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
+
   useEffect(() => {
     localStorage.setItem("select", select.toString());
-    // localStorage.setItem("values",JSON.stringify(values))
-    console.log(select);
+    //console.log(select);
   }, [select]);
+
   const handleSelect = (id: number) => {
     setSelect(id);
   };
@@ -120,65 +141,126 @@ export const Progress: React.FC = (): JSX.Element => {
       setSelect(select - 1);
     }
   };
-  const handleChange = (name: string, value: string) => {
-    setValues({ ...values, [name]: value });
+  const handleChange = (name: string, value: string | number) => {
+    
+      setValues({ ...values, [name]: value });   
+    
+  };
+    const handleItemChange = (name: string, value: string ,id:number) => {
+      console.log(values.education[1]);
+     // const newEducation=[...values.education,{ ...values.education[id], [name]: value }]
+      setValues({
+        ...values,
+        education: [
+          (values.education[id] = { ...values.education[id], [name]: value }),
+          ...values.education,
+        ],
+      });
+     
+    };
+  const addEducation = () => {
+    setValues({
+      ...values,
+      education: [
+        ...values.education,
+        { 
+          id:values.education.length,
+          grade: "",
+          major: "",
+          orientation: "",
+          collegeName: "",
+          collegeType: "",
+          collegeProvince: "",
+          enteringYear: 1390,
+          average: 0,
+          graduationYear: 1390,
+        },
+      ],
+    });
+  //  console.log(values.education);
+   localStorage.setItem("values", JSON.stringify(values));
+  };
+  const addBusiness = () => {
+    setValues({
+      ...values,
+      business: [
+        ...values.business,
+        {id:values.business.length-1,
+          position: "",
+          level: "",
+          company: "",
+          employmentYear: 1390,
+          leavingYear: 1390,
+        },
+      ],
+    });
+  // console.log(values.education);
   };
   return (
     <>
       <ProgressBar select={select} selectItem={handleSelect} />
-      <div className="lg:px-[88px] sm:px-[40px] md:px-[60px] relative sm:bg-bgColor sm:py-[70px]">
+      <div className="lg:px-[88px] sm:px-[40px] md:px-[60px] relative sm:bg-bgColorLight sm:py-[40px]">
         {select === 1 ? (
           <PersonalInfo data={values} handleChange={handleChange} />
         ) : select === 2 ? (
-          <EducationInfo />
+          <EducationInfo
+            data={values.education}
+            handleChange={handleItemChange}
+            addEducation={addEducation}
+          />
         ) : select === 3 ? (
-          <BusinessInfo />
+          <BusinessInfo
+            data={values.business}
+            handleChange={handleItemChange}
+            addBusiness={addBusiness}
+          />
         ) : select === 4 ? (
           <Skills />
         ) : (
           <Projects />
         )}
 
-        <div className="fixed bottom-10 left-0 lg:px-[88px] px-[40px] md:px-[60px] flex justify-between items-center w-full">
+        <div className="fixed bottom-10 left-0 lg:px-[88px] px-[40px] md:px-[60px] flex justify-end gap-4 items-center w-full">
           <div>
-          <Button
-            className={"hidden sm:block"}
-            id={"previous"}
-            hasIcon={true}
-            icon={faArrowRight}
-            onClick={goPrevious}
-            title={"مرحله قبلی"}
-            direction={"left"}
-          ></Button>
-          <Button
-            className={"sm:hidden"}
-            id={"previous"}
-            hasIcon={true}
-            icon={faArrowRight}
-            onClick={goPrevious}
-            title={""}
-            direction={"left"}
-          ></Button>
+            <Button
+              className={"hidden "}
+              id={"previous"}
+              hasIcon={true}
+              icon={faArrowRight}
+              onClick={goPrevious}
+              title={"مرحله قبلی"}
+              direction={"left"}
+            ></Button>
+            <Button
+              className={"sm:hidden"}
+              id={"previous"}
+              hasIcon={true}
+              icon={faArrowRight}
+              onClick={goPrevious}
+              title={""}
+              direction={"left"}
+            ></Button>
           </div>
           <div>
-          <Button
-            className={"hidden sm:block"}
-            id={"next"}
-            hasIcon={true}
-            icon={faArrowLeft}
-            direction="right"
-            onClick={goForward}
-            title={`${select === 5 ? "ذخیره و مشاهده" : "ذخیره و ادامه"}`}
-          ></Button>
-           <Button
-            className={"sm:hidden"}
-            id={"next"}
-            hasIcon={true}
-            icon={faArrowLeft}
-            direction="right"
-            onClick={goForward}
-            title={`${select === 5 ? "" : ""}`}
-          ></Button>
+            <Button
+              className={"hidden sm:block bg-successColor border-none"}
+              id={"next"}
+              hasIcon={true}
+              icon={faArrowLeft}
+              color="successColor"
+              direction="left"
+              onClick={goForward}
+              title={`${select === 5 ? "ذخیره و مشاهده" : "ذخیره و ادامه"}`}
+            ></Button>
+            <Button
+              className={"sm:hidden"}
+              id={"next"}
+              hasIcon={true}
+              icon={faArrowLeft}
+              direction="right"
+              onClick={goForward}
+              title={`${select === 5 ? "" : ""}`}
+            ></Button>
           </div>
         </div>
       </div>
