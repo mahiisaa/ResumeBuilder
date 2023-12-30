@@ -147,14 +147,11 @@ export const Progress: React.FC = (): JSX.Element => {
     
   };
     const handleItemChange = (name: string, value: string ,id:number) => {
-      console.log(values.education[1]);
-     // const newEducation=[...values.education,{ ...values.education[id], [name]: value }]
+     const updatedEducation=[...values.education]
+     updatedEducation[id]={...values.education[id], [name]: value}
       setValues({
         ...values,
-        education: [
-          (values.education[id] = { ...values.education[id], [name]: value }),
-          ...values.education,
-        ],
+        education: updatedEducation,
       });
      
     };

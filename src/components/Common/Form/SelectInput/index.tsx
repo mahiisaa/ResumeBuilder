@@ -10,9 +10,9 @@ interface ISelectInputProps{
     onChange: (name: string, value: string) => void;
 }
 export const SelectInput:React.FC<ISelectInputProps>=({options,title,className,id,name,onChange,inputValue}):JSX.Element=>{
-  const [value, setValue] = useState(inputValue);
+ // const [value, setValue] = useState(inputValue);
     const handleChange=(e: React.ChangeEvent<HTMLSelectElement>)=>{
-      setValue(e.target.value)
+      //setValue(e.target.value)
       onChange(e.target.name, e.target.value);
       console.log(e.target.name)
     }

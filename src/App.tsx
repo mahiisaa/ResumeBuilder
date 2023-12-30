@@ -20,8 +20,9 @@ const App = (): JSX.Element => {
       <Routes>
         <Route path="/" element={<Dashboard />}>
           <Route index element={<HomePage />}></Route>
-          <Route path="/templates" element={<Templates />}></Route>
+          <Route path="/templates" element={<Templates />}> </Route>
           <Route path="/1" element={<DefaultTemp />}></Route>
+         
           <Route path="/resumeProgress" element={<Progress />}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
