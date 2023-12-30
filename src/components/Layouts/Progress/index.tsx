@@ -155,6 +155,13 @@ export const Progress: React.FC = (): JSX.Element => {
       });
      
     };
+    const handleDelete=(id:number)=>{
+      const updatedList=values.education.filter((item)=>item.id!==id)
+      setValues({
+        ...values,
+        education:updatedList
+      })
+    }
   const addEducation = () => {
     setValues({
       ...values,
@@ -204,6 +211,7 @@ export const Progress: React.FC = (): JSX.Element => {
             data={values.education}
             handleChange={handleItemChange}
             addEducation={addEducation}
+           handleDelete={handleDelete}
           />
         ) : select === 3 ? (
           <BusinessInfo

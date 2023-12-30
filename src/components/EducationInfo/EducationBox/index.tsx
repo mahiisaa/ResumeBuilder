@@ -20,11 +20,17 @@ interface IEducationBoxProps {
   boxdata: EducationInfoType;
   id:number
   handleChange: (name: string, value: string,id:number) => void;
+  handleDelete:(id:number)=>void
 }
-export const EducationBox: React.FC<IEducationBoxProps> = ({boxdata,handleChange,id}): JSX.Element => {
-useEffect(() => {
- // console.log(id);
-}, [id]);
+export const EducationBox: React.FC<IEducationBoxProps> = ({
+  boxdata,
+  handleChange,
+  id,
+  handleDelete,
+}): JSX.Element => {
+  useEffect(() => {
+    // console.log(id);
+  }, [id]);
   return (
     <>
       <div className=" grid grid-cols-8 gap-4">
@@ -197,10 +203,12 @@ useEffect(() => {
             icon={faChevronUp}
           ></FontAwesomeIcon>
         </div>
-        <FontAwesomeIcon
-          className="bg-bgColor  p-3  rounded-md text-errorColor"
-          icon={faTrashAlt}
-        ></FontAwesomeIcon>
+        <div>
+          <FontAwesomeIcon onClick={()=>handleDelete(boxdata.id)}
+            className="bg-bgColor  p-3  rounded-md text-errorColor"
+            icon={faTrashAlt}
+          ></FontAwesomeIcon>
+        </div>
       </div>
       <hr className="h-px my-10  text-bgColor border-1 w-full" />
     </>

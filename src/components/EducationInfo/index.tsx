@@ -18,12 +18,18 @@ interface IEducationInfoProps {
   data: EducationInfoType[];
   handleChange: (name: string, value: string,id:number) => void;
   addEducation:()=>void
+  handleDelete:(id:number)=>void
 }
-export const EducationInfo: React.FC<IEducationInfoProps> = ({data,handleChange,addEducation}): JSX.Element => {
-useEffect(()=>{
-console.log(data)
-},[data])
- 
+export const EducationInfo: React.FC<IEducationInfoProps> = ({
+  data,
+  handleChange,
+  addEducation,
+  handleDelete,
+}): JSX.Element => {
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <>
       <h2 className="text-primary text-base mb-4 mr-2 font-semibold ">
@@ -31,13 +37,14 @@ console.log(data)
       </h2>
       <form>
         <div className="shadow-md bg-[#ffffff] py-10 px-8 mb-[20px] rounded-xl ">
-          {data?.map((item) => (        
-              <EducationBox
+          {data?.map((item) => (
+            <EducationBox
               key={item.id}
-                id={item.id}
-                boxdata={item}
-                handleChange={handleChange}
-              ></EducationBox>
+              id={item.id}
+              boxdata={item}
+              handleChange={handleChange}
+              handleDelete={handleDelete}
+            ></EducationBox>
           ))}
 
           <Button
