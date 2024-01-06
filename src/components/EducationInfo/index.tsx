@@ -16,9 +16,9 @@ type EducationInfoType ={
 }
 interface IEducationInfoProps {
   data: EducationInfoType[];
-  handleChange: (name: string, value: string,id:number) => void;
+  handleChange: (name: string, value: string,id:number,type:string) => void;
   addEducation:()=>void
-  handleDelete:(id:number)=>void
+  handleDelete:(id:number,type:string)=>void
 }
 export const EducationInfo: React.FC<IEducationInfoProps> = ({
   data,
@@ -26,17 +26,18 @@ export const EducationInfo: React.FC<IEducationInfoProps> = ({
   addEducation,
   handleDelete,
 }): JSX.Element => {
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
 
   return (
     <>
       <h2 className="text-primary text-base mb-4 mr-2 font-semibold ">
         تحصیلات آکادمیک
       </h2>
+      <div className="shadow-md bg-[#ffffff] py-10 px-8 mb-[20px] rounded-xl ">
       <form>
-        <div className="shadow-md bg-[#ffffff] py-10 px-8 mb-[20px] rounded-xl ">
+        
           {data?.map((item) => (
             <EducationBox
               key={item.id}
@@ -44,7 +45,7 @@ export const EducationInfo: React.FC<IEducationInfoProps> = ({
               boxdata={item}
               handleChange={handleChange}
               handleDelete={handleDelete}
-            ></EducationBox>
+           />
           ))}
 
           <Button
@@ -54,8 +55,9 @@ export const EducationInfo: React.FC<IEducationInfoProps> = ({
             hasIcon={true}
             icon={faPlus}
           ></Button>
-        </div>
+        
       </form>
+      </div>
     </>
   );
 };

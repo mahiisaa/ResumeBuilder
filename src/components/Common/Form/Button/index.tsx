@@ -7,7 +7,7 @@ interface IButtonProps{
     hasIcon?:boolean,
     icon?:any,
     direction?:string
-    onClick:()=>void,
+    onClick:(x:any)=>void,
     color?:string
 }
 

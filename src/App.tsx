@@ -9,9 +9,6 @@ import { DefaultTemp } from "./pages/Templates/DefaultTemp";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 
-
-
-
 const App = (): JSX.Element => {
   
   return (
@@ -22,7 +19,6 @@ const App = (): JSX.Element => {
           <Route index element={<HomePage />}></Route>
           <Route path="/templates" element={<Templates />}> </Route>
           <Route path="/1" element={<DefaultTemp />}></Route>
-         
           <Route path="/resumeProgress" element={<Progress />}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>

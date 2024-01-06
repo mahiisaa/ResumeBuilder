@@ -29,7 +29,21 @@ export const Progress: React.FC = (): JSX.Element => {
     level: string;
     company: string;
     employmentYear: number;
+    componyProvince:string;
+    address:string
     leavingYear: number;
+  }
+  interface Skills{
+    id:number,
+    title:string,
+    type:string,
+    level:string
+  }
+  interface Projects {
+    id: number;
+    title: string;
+    employer: string;
+    description: string;
   }
   interface valueType {
     jobTitle: string;
@@ -49,6 +63,8 @@ export const Progress: React.FC = (): JSX.Element => {
     address: string;
     education: Education[];
     business: Business[];
+    skills:Skills[];
+    projects:Projects[];
   }
 
   const initialState: valueType =
@@ -60,7 +76,7 @@ export const Progress: React.FC = (): JSX.Element => {
           jobTitle: "",
           firstName: "",
           lastName: "",
-          birthYear: 0,
+          birthYear: 1360,
           birthMonth: "",
           birthDay: "",
           gender: "",
@@ -94,8 +110,19 @@ export const Progress: React.FC = (): JSX.Element => {
               company: "",
               employmentYear: 1390,
               leavingYear: 1390,
+              componyProvince:"",
+              address:""
             },
           ],
+          skills:[{
+           
+        }],
+        projects:[{
+          id:0,
+          title:"",
+          employer:"",
+          description:""
+        }]
         };
   const [values, setValues] = useState<valueType>(initialState);
  // const [education,setEducation]=useState<Education>(init)
@@ -108,8 +135,9 @@ export const Progress: React.FC = (): JSX.Element => {
 
   useEffect(() => {
     localStorage.setItem("select", select.toString());
+    localStorage.setItem("values", JSON.stringify(values));
     //console.log(select);
-  }, [select]);
+  }, [select,values]);
 
   const handleSelect = (id: number) => {
     setSelect(id);
@@ -142,25 +170,73 @@ export const Progress: React.FC = (): JSX.Element => {
     }
   };
   const handleChange = (name: string, value: string | number) => {
-    
-      setValues({ ...values, [name]: value });   
-    
+      setValues({ ...values, [name]: value }); 
+      console.log(name,value)  
   };
-    const handleItemChange = (name: string, value: string ,id:number) => {
-     const updatedEducation=[...values.education]
-     updatedEducation[id]={...values.education[id], [name]: value}
+    const handleItemChange = (name: string, value: string ,id:number,type:string) => {
+  switch (type) {
+    case "education":
+      const updatedEducation = [...values.education];
+      updatedEducation[id] = { ...values.education[id], [name]: value };
       setValues({
         ...values,
         education: updatedEducation,
       });
-     
-    };
-    const handleDelete=(id:number)=>{
-      const updatedList=values.education.filter((item)=>item.id!==id)
+      break
+    case "business":
+      const updatedBusiness = [...values.business];
+      updatedBusiness[id] = { ...values.business[id], [name]: value };
       setValues({
         ...values,
-        education:updatedList
-      })
+        business: updatedBusiness,
+      });
+      break
+    case "skill":
+      const updatedSkill = [...values.skills];
+      updatedSkill[id] = { ...values.skills[id], [name]: value };
+      setValues({
+        ...values,
+        skills: updatedSkill,
+      });
+      break
+      default:
+        break
+  }  
+    };
+    
+    const handleDelete=(id:number,type:string)=>{
+      switch (type) {
+        case "education":
+          const updatedEduList = values.education.filter(
+            (item) => item.id !== id
+          );
+          setValues({
+            ...values,
+            education: updatedEduList,
+          });
+          break;
+        case "business":
+          const updatedBusinessList = values.business.filter(
+            (item) => item.id !== id
+          );
+          setValues({
+            ...values,
+            business: updatedBusinessList,
+          });
+          break;
+        case "skill":
+          const updatedSkillList = values.skills.filter(
+            (item) => item.id !== id
+          );
+          setValues({
+            ...values,
+            skills: updatedSkillList,
+          });
+          break;
+        default:
+          break;
+      }
+      
     }
   const addEducation = () => {
     setValues({
@@ -182,24 +258,58 @@ export const Progress: React.FC = (): JSX.Element => {
       ],
     });
   //  console.log(values.education);
-   localStorage.setItem("values", JSON.stringify(values));
+   //localStorage.setItem("values", JSON.stringify(values));
   };
   const addBusiness = () => {
     setValues({
       ...values,
       business: [
         ...values.business,
-        {id:values.business.length-1,
+        {id:values.business.length,
           position: "",
           level: "",
           company: "",
           employmentYear: 1390,
           leavingYear: 1390,
+          componyProvince:"",
+          address:""
         },
       ],
     });
   // console.log(values.education);
   };
+   const addSkills= (newSkill:Skills) => {
+    console.log(newSkill)
+     setValues({
+       ...values,
+       skills: [
+         ...values.skills,
+         {
+           id: values.skills.length,
+           title: newSkill.title,
+           level: newSkill.level,
+           type: newSkill.type,
+         },
+       ],
+     });
+     // console.log(values.education);
+   };
+      const addProject = () => {
+        //console.log(newSkill);
+        setValues({
+          ...values,
+          projects: [
+            ...values.projects,
+            {
+              id: values.education.length,
+              title:"",
+              employer:"",
+              description:""
+            },
+          ],
+        });
+        // console.log(values.education);
+      };
   return (
     <>
       <ProgressBar select={select} selectItem={handleSelect} />
@@ -211,18 +321,24 @@ export const Progress: React.FC = (): JSX.Element => {
             data={values.education}
             handleChange={handleItemChange}
             addEducation={addEducation}
-           handleDelete={handleDelete}
+            handleDelete={handleDelete}
           />
         ) : select === 3 ? (
           <BusinessInfo
             data={values.business}
             handleChange={handleItemChange}
             addBusiness={addBusiness}
+            handleDelete={handleDelete}
           />
         ) : select === 4 ? (
-          <Skills />
+          <Skills data={values.skills} addSkill={addSkills} handleDelete={handleDelete} />
         ) : (
-          <Projects />
+          <Projects
+            data={values.projects}
+            handleChange={handleItemChange}
+            addProject={addProject}
+            handleDelete={handleDelete}
+          />
         )}
 
         <div className="fixed bottom-10 left-0 lg:px-[88px] px-[40px] md:px-[60px] flex justify-end gap-4 items-center w-full">
@@ -248,7 +364,9 @@ export const Progress: React.FC = (): JSX.Element => {
           </div>
           <div>
             <Button
-              className={"hidden sm:block bg-successColor border-none"}
+              className={
+                "hidden sm:block bg-successColor border-none hover:bg-successColor"
+              }
               id={"next"}
               hasIcon={true}
               icon={faArrowLeft}

@@ -43,8 +43,8 @@ export const PersonalInfo: React.FC<personalInfoProps> = ({
         مشخصات اولیه
       </h2>
       <form>
-        <div className="flex justify-between lg:flex-row md:flex-row flex-col items-center  bg-[#ffffff] sm:py-10 py-8 sm:px-8 px-4  rounded-xl">
-          <div className="sm:w-1/4 w-full flex flex-col justify-center items-center gap-4">
+        <div className="flex justify-between flex-col lg:flex-row items-center bg-[#ffffff] p-8 lg:py-10 lg:px-4  rounded-xl">
+          <div className="lg:w-1/4 w-full flex flex-col justify-center items-center gap-4">
             <div className=" w-[140px] h-[140px]  rounded-full bg-primary">
               {/* <img src={AvatarSVG}></img> */}
             </div>
@@ -70,8 +70,8 @@ export const PersonalInfo: React.FC<personalInfoProps> = ({
               ></Button>
             </div>
           </div>
-          <div className="sm:w-3/4  grid grid-cols-2 sm:grid-cols-6 gap-4 justify-center md:mt-0 mt-8">
-            <div className="sm:col-span-2">
+          <div className="lg:w-3/4 grid lg:grid-cols-6 grid-cols-3 gap-4 justify-center lg:mt-0 mt-8">
+            <div className="lg:col-span-2 col-span-1">
               <Input
                 name={"firstName"}
                 className={""}
@@ -84,7 +84,7 @@ export const PersonalInfo: React.FC<personalInfoProps> = ({
                 onChange={(name, value) => handleChange(name, value)}
               ></Input>
             </div>
-            <div className="sm:col-span-2">
+            <div className="lg:col-span-2 col-span-1">
               <Input
                 name={"lastName"}
                 className={""}
@@ -110,7 +110,7 @@ export const PersonalInfo: React.FC<personalInfoProps> = ({
                 onChange={(name, value) => handleChange(name, value)}
               ></Input>
             </div>
-            <div className="text-right flex flex-col col-span-2 sm:col-span-6 gap-XS">
+            <div className="text-right flex flex-col col-span-2 sm:col-span-6 gap-XS p-2">
               <label
                 className="text-myblack text-sm font-normal leading-normal dark:text-[#bac4c8] "
                 htmlFor="aboutMe"
@@ -162,7 +162,7 @@ export const PersonalInfo: React.FC<personalInfoProps> = ({
                   type={"number"}
                   id="birthYear"
                   hasLabel={true}
-                  label="سال تولد"
+                  label="تاریخ تولد"
                   placeholder=""
                   inputValue={data?.birthYear}
                   onChange={(name, value) => handleChange(name, value)}

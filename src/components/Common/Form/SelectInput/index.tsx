@@ -10,11 +10,12 @@ interface ISelectInputProps{
     onChange: (name: string, value: string) => void;
 }
 export const SelectInput:React.FC<ISelectInputProps>=({options,title,className,id,name,onChange,inputValue}):JSX.Element=>{
- // const [value, setValue] = useState(inputValue);
+  const [value, setValue] = useState(inputValue);
     const handleChange=(e: React.ChangeEvent<HTMLSelectElement>)=>{
-      //setValue(e.target.value)
+      setValue(e.target.value)
+      console.log(value);
       onChange(e.target.name, e.target.value);
-      console.log(e.target.name)
+      //console.log(e.target.name)
     }
     return(
         <div className="text-right flex flex-col gap-XS">
@@ -24,10 +25,10 @@ export const SelectInput:React.FC<ISelectInputProps>=({options,title,className,i
             >
               {title}
             </label>
-            <select className={`border px-2 border-bgColor h-[48px] rounded-md w-full  outline-none text-right ${className}`}  
-             value={inputValue} onChange={handleChange}>
-            <option disabled selected className="text-right p-4" ></option>
-                {options.map((item)=><option value={item}  >{item}</option>)}
+            <select className={`border px-2 border-bgColor h-[48px] rounded-md w-full  outline-none text-right ${className}`} name={name}
+              onChange={handleChange} value={value}>
+            <option disabled   className="text-right p-4" ></option>
+                {options.map((item)=><option value={item} >{item}</option>)}
              </select>
         </div>
     )

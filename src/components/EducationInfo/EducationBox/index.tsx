@@ -19,8 +19,8 @@ type EducationInfoType = {
 interface IEducationBoxProps {
   boxdata: EducationInfoType;
   id:number
-  handleChange: (name: string, value: string,id:number) => void;
-  handleDelete:(id:number)=>void
+  handleChange: (name: string, value: string,id:number,type:string) => void;
+  handleDelete:(id:number,type:string)=>void
 }
 export const EducationBox: React.FC<IEducationBoxProps> = ({
   boxdata,
@@ -48,7 +48,9 @@ export const EducationBox: React.FC<IEducationBoxProps> = ({
             id="grade"
             name="grade"
             inputValue={boxdata.grade}
-            onChange={(name, value) => handleChange(name, value, boxdata.id)}
+            onChange={(name, value) =>
+              handleChange(name, value, boxdata.id, "education")
+            }
           />
         </div>
 
@@ -59,7 +61,9 @@ export const EducationBox: React.FC<IEducationBoxProps> = ({
             className={""}
             type={"text"}
             inputValue={boxdata.major}
-            onChange={(name, value) => handleChange(name, value, boxdata.id)}
+            onChange={(name, value) =>
+              handleChange(name, value, boxdata.id, "education")
+            }
             hasLabel={true}
             label="رشته تحصیلی"
           ></Input>
@@ -71,7 +75,9 @@ export const EducationBox: React.FC<IEducationBoxProps> = ({
             className={""}
             type={"text"}
             inputValue={boxdata.orientation}
-            onChange={(name, value) => handleChange(name, value, boxdata.id)}
+            onChange={(name, value) =>
+              handleChange(name, value, boxdata.id, "education")
+            }
             hasLabel={true}
             label="گرایش تحصیلی"
           ></Input>
@@ -83,7 +89,9 @@ export const EducationBox: React.FC<IEducationBoxProps> = ({
             className={""}
             type={"text"}
             inputValue={boxdata.collegeType}
-            onChange={(name, value) => handleChange(name, value, boxdata.id)}
+            onChange={(name, value) =>
+              handleChange(name, value, boxdata.id, "education")
+            }
             hasLabel={true}
             label="نوع موسسه"
           ></Input>
@@ -95,7 +103,9 @@ export const EducationBox: React.FC<IEducationBoxProps> = ({
             className={""}
             type={"text"}
             inputValue={boxdata.collegeName}
-            onChange={(name, value) => handleChange(name, value, boxdata.id)}
+            onChange={(name, value) =>
+              handleChange(name, value, boxdata.id, "education")
+            }
             hasLabel={true}
             label="نام موسسه"
           ></Input>
@@ -136,7 +146,9 @@ export const EducationBox: React.FC<IEducationBoxProps> = ({
               className={""}
               type={"number"}
               inputValue={boxdata.enteringYear}
-              onChange={(name, value) => handleChange(name, value, boxdata.id)}
+              onChange={(name, value) =>
+                handleChange(name, value, boxdata.id, "education")
+              }
               hasLabel={true}
               label="سال ورود"
             ></Input>
@@ -148,7 +160,9 @@ export const EducationBox: React.FC<IEducationBoxProps> = ({
               className={""}
               type={"number"}
               inputValue={boxdata.graduationYear}
-              onChange={(name, value) => handleChange(name, value, boxdata.id)}
+              onChange={(name, value) =>
+                handleChange(name, value, boxdata.id, "education")
+              }
               hasLabel={true}
               label="سال فراغت"
             ></Input>
@@ -176,7 +190,9 @@ export const EducationBox: React.FC<IEducationBoxProps> = ({
             className={""}
             type={"text"}
             inputValue={boxdata.average}
-            onChange={(name, value) => handleChange(name, value, boxdata.id)}
+            onChange={(name, value) =>
+              handleChange(name, value, boxdata.id, "education")
+            }
             hasLabel={true}
             label="معدل"
           ></Input>
@@ -204,7 +220,8 @@ export const EducationBox: React.FC<IEducationBoxProps> = ({
           ></FontAwesomeIcon>
         </div>
         <div>
-          <FontAwesomeIcon onClick={()=>handleDelete(boxdata.id)}
+          <FontAwesomeIcon
+            onClick={() => handleDelete(boxdata.id,"education")}
             className="bg-bgColor  p-3  rounded-md text-errorColor"
             icon={faTrashAlt}
           ></FontAwesomeIcon>
