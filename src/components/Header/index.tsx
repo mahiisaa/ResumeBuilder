@@ -12,7 +12,9 @@ export const Header: React.FC = (): JSX.Element => {
           <Link to="/resumeProgress">
           <li className="hover:bg-bgColorLight active:bg-bgColorLight rounded-md py-1 px-2 "> رزومه ساز</li>
           </Link>
+          <Link to="/onlineResume">
           <li className="hover:bg-bgColorLight rounded-md py-1 px-2 ">نمونه رزومه </li>
+          </Link>
           <Link to={"/templates"}>
           <li className="hover:bg-bgColorLight rounded-md py-1 px-2">قالب رزومه </li>
           </Link>

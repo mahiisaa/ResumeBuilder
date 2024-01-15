@@ -18,7 +18,7 @@ module.exports = {
         M: "24px",
         S: "16px",
         XS: "8px",
-        XXS:"4px"
+        XXS: "4px",
       },
       width: {
         A4: "210mm",
@@ -50,7 +50,8 @@ module.exports = {
       bgColor: "#dee2e6",
       bgColorLight: "#edeff1",
       primary: "#2B58C4",
-      primaryLight: "#743df1",
+      primaryDark: "#1e3d7d",
+      primaryLight: "#dee6f7",
       secondColor: "#ffb703",
       errorColor: "#d90429",
       errorColorLight: "#ef233c",

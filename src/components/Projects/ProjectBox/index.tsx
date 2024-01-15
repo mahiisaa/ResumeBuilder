@@ -23,7 +23,7 @@ export const ProjectBox:React.FC<IProjectProps>=({boxdata,handleChange,handleDel
             type={"text"}
             inputValue={boxdata.title}
             onChange={(name, value) =>
-              handleChange(name, value, boxdata.id, "projects")
+              handleChange(name, value, boxdata.id, "project")
             }
             hasLabel={true}
             label="عنوان پروژه"
@@ -37,7 +37,7 @@ export const ProjectBox:React.FC<IProjectProps>=({boxdata,handleChange,handleDel
             type={"text"}
             inputValue={boxdata.employer}
             onChange={(name, value) =>
-              handleChange(name, value, boxdata.id, "projects")
+              handleChange(name, value, boxdata.id, "project")
             }
             hasLabel={true}
             label="کارفرما"
@@ -57,7 +57,7 @@ export const ProjectBox:React.FC<IProjectProps>=({boxdata,handleChange,handleDel
             placeholder=""
             name="description"
             onChange={(e) =>
-              handleChange(e.target.name, e.target.value, boxdata.id, "projets")
+              handleChange(e.target.name, e.target.value, boxdata.id, "project")
             }
             value={boxdata?.description}
           ></textarea>

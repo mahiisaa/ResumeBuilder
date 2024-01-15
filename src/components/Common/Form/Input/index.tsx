@@ -7,8 +7,9 @@ interface IIcon {
     className?: string;
     style?: {};
   }
+  
 interface IInputProps{
-    name: string;
+    name?: string;
     id: string;
     className:string,
     type: "text" | "number" | "email" | "password" | "tel" | "hidden" | "file";
@@ -17,34 +18,54 @@ interface IInputProps{
     placeholder?: string;
     icon?:IIcon;
     autoFocus?: boolean;
-    inputValue:string |number;
-    onChange: (name: string, value: string) => void;
+    inputValue?:string |number;
+    onChange?: (name: string, value: string) => void
+    validationSchema?:any;
+    register?:any;
+    required?:any
 
 }
-export const Input:React.FC<IInputProps>=({type,name,className,hasLabel,label,placeholder,icon,inputValue,onChange,id}):JSX.Element=>{
-    //const [value, setValue] = useState(inputValue);
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-     // setValue(e.target.value);
-      onChange(e.target.name, e.target.value);
-    };
-    return(
-         <div className="text-right flex flex-col gap-XS">
-        {hasLabel && (
-            <label
-              className="text-myblack text-sm font-normal leading-normal dark:text-[#bac4c8] "
-              htmlFor={id}
-            >
-              {label}
-            </label>
-          )}
-        <input type={type}
-         name={name}
-         placeholder={placeholder}
-         id={name}
-         className={`border border-bgColor h-[48px] outline-primary w-full rounded-md px-2 text-right w-full ${className}`}
-         value={inputValue}
-         onChange={handleChange}>
-         </input>
-         </div> 
-    )
-}
+export const Input: React.FC<IInputProps> = ({
+  type,
+  name,
+  className,
+  hasLabel,
+  label,
+  placeholder,
+  icon,
+  inputValue,
+  onChange,
+  id,
+  register,
+  validationSchema,
+  required
+}): JSX.Element => {
+  //const [value, setValue] = useState(inputValue);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // setValue(e.target.value);
+    onChange?.(e.target.name, e.target.value);
+  };
+  return (
+    <div className="text-right flex flex-col gap-XS">
+      {hasLabel && (
+        <label
+          className="text-myblack text-sm font-normal leading-normal dark:text-[#bac4c8] "
+          htmlFor={id}
+        >
+          {label}
+          {required && "*"}
+        </label>
+      )}
+      <input
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        id={name}
+        className={`border border-bgColor h-[48px] outline-primary w-full rounded-md px-2 text-right w-full ${className}`}
+        value={inputValue}
+        onChange={handleChange}
+        {...register?.(name, validationSchema)}
+      ></input>
+    </div>
+  );
+};

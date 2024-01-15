@@ -182,7 +182,7 @@ export const Progress: React.FC = (): JSX.Element => {
         ...values,
         education: updatedEducation,
       });
-      break
+      break;
     case "business":
       const updatedBusiness = [...values.business];
       updatedBusiness[id] = { ...values.business[id], [name]: value };
@@ -190,7 +190,7 @@ export const Progress: React.FC = (): JSX.Element => {
         ...values,
         business: updatedBusiness,
       });
-      break
+      break;
     case "skill":
       const updatedSkill = [...values.skills];
       updatedSkill[id] = { ...values.skills[id], [name]: value };
@@ -198,9 +198,17 @@ export const Progress: React.FC = (): JSX.Element => {
         ...values,
         skills: updatedSkill,
       });
-      break
-      default:
-        break
+      break;
+    case "project":
+      const updatedProject = [...values.projects];
+      updatedProject[id] = { ...values.projects[id], [name]: value };
+      setValues({
+        ...values,
+        projects: updatedProject,
+      });
+      break;
+    default:
+      break;
   }  
     };
     

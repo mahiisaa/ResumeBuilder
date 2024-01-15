@@ -7,15 +7,17 @@ interface IButtonProps{
     hasIcon?:boolean,
     icon?:any,
     direction?:string
-    onClick:(x:any)=>void,
-    color?:string
+    onClick?:(x:any)=>void,
+    color?:string,
+    type?:("submit"|"button"|"reset") 
 }
 
-export const Button:React.FC<IButtonProps>=({title,className,id,hasIcon,icon,onClick,color,direction="left"}):JSX.Element=>{
+
+export const Button:React.FC<IButtonProps>=({title,className,id,hasIcon,icon,onClick,color,direction="left",type}):JSX.Element=>{
    
     return(
         <div>
-            <button className={`btn  flex justify-center items-center  ${className}`} type="button" id={id} onClick={onClick}>
+            <button className={`btn  flex justify-center items-center  ${className}`}  id={id} type={type} onClick={onClick}>
                {hasIcon&& direction==="right"&& <FontAwesomeIcon icon={icon}/>} {title } {hasIcon&& direction==="left"&& <FontAwesomeIcon icon={icon}/>}
                 </button>
         </div>

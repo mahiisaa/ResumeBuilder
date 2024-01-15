@@ -25,7 +25,7 @@ export const Templates: React.FC = (): JSX.Element => {
     <div className="grid grid-cols-4 m-20 gap-10">  
       {
       templates.map(item=>
-      <Link to={`/${1}`}>
+      <Link to={`/${2}`}>
         <TempCard title={item.title} preview={""} ></TempCard>
       </Link>)}
     </div>
